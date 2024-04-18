@@ -1,4 +1,7 @@
 from django.urls import path
-from .views import index
+from .views import index, GetProjects
 
-urlpatterns = [path("", index)]
+urlpatterns = [
+    path("", index),
+    path('api/projects/', GetProjects.as_view(), name='get-projects'),
+]

@@ -12,4 +12,4 @@ class ProjectsAdmin(admin.ModelAdmin):
   def __str__(self): 
     return self.name
   
-admin.site.register(Projects, ProjectsAdmin)
+admin.site.register(Project, ProjectsAdmin)

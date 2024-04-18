@@ -1,3 +1,8 @@
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 """
 Django settings for api project.
 
@@ -77,7 +82,16 @@ WSGI_APPLICATION = 'api.wsgi.app'
 # Note: Django modules for using databases are not support in serverless
 # environments like Vercel. You can use a database over HTTP, hosted elsewhere.
 
-DATABASES = {}
+DATABASES = {
+  'default': { 
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', 
+        'HOST' : os.getenv('DATABASE_HOST'), 
+        'USER': os.getenv('DATABASE_USER'), 
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'), 
+        'NAME': 'postgres', 
+        'PORT': '5432', 
+    } 
+}
 
 
 # Password validation

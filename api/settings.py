@@ -176,6 +176,6 @@ except ImportError:
         ] 
     }
 
-  print('Local settings were not imported')
+print('Local settings were not imported')
 
 DEFAULT_FILE_STORAGE = 'db_file_storage.storage.DatabaseFileStorage'

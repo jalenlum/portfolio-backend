@@ -82,7 +82,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'api.wsgi.app'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 # Note: Django modules for using databases are not support in serverless
@@ -180,6 +179,12 @@ except ImportError:
         ] 
     }
 
-print('Local settings were not imported')
-
 DEFAULT_FILE_STORAGE = 'db_file_storage.storage.DatabaseFileStorage'
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Portfolio Portal",
+
+    "site_brand": "Jalen Lum",
+
+}
+JAZZMIN_SETTINGS["show_ui_builder"] = True

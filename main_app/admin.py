@@ -13,3 +13,4 @@ class ProjectsAdmin(admin.ModelAdmin):
     return self.name
   
 admin.site.register(Project, ProjectsAdmin)
+admin.site.register(Resume)

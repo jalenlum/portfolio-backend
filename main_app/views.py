@@ -3,10 +3,21 @@ from rest_framework.views import APIView
 from .serializers import * 
 from rest_framework.response import Response
 from .pagination import ProjectPagination
+from django.http import HttpResponse
+from datetime import datetime
 
 # Create your views here.
 def index(request):
-    return render(request, "index.html")
+    now = datetime.now()
+    html = f'''
+    <html>
+        <body>
+            <h1>Hello from Vercel!</h1>
+            <p>The current time is { now }.</p>
+        </body>
+    </html>
+    '''
+    return HttpResponse(html)
 
 class GetProjects(APIView): 
   def get(self, request): 
@@ -25,4 +36,10 @@ class GetProjectsPagination(APIView):
       serializer = ProjectSerializer(page, many=True) 
       return paginator.get_paginated_response(serializer.data) 
     serializer = ProjectSerializer(queryset, many=True) 
+    return Response(serializer.data)
+  
+class GetResume(APIView): 
+  def get(self, request): 
+    queryset = Resume.objects.all()
+    serializer = ResumeSerializer(queryset, many=True, context={'request': request})
     return Response(serializer.data)

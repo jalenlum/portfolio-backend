@@ -25,3 +25,14 @@ class Project(models.Model):
   def delete(self, *args, **kwargs): 
     super(Project, self).delete(*args, **kwargs) 
     File.objects.filter(filename = self.image.name).delete()
+
+class Resume(models.Model):
+  name = models.CharField(max_length=255)
+  file = models.FileField(upload_to='main_app.File/bytes/filename/mimetype')
+
+  def delete(self, *args, **kwargs):
+    super(Resume, self).delete(*args, **kwargs)
+    File.objects.filter(filename = self.file.name).delete()
+
+  def __str__(self):
+    return str(self.name)
